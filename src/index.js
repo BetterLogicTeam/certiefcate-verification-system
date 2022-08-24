@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
+import { MoralisProvider } from "react-moralis";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.css";
@@ -9,7 +10,15 @@ import { BrowserRouter } from "react-router-dom";
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <MoralisProvider
+        initializeOnMount={true}
+        serverUrl="https://dqxhty4nx4gy.usemoralis.com:2053/server"
+        appId="j45Qb4Zw3XvkWuenPbvKvRk8mZ15s8UyicmivZuu"
+        masterKey="oehRRIOWw5bNYeMCLRpodnlQl3eUiXlbyCMiJfHl"
+      >
+        <App />
+      </MoralisProvider>
+      {/* <App /> */}
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")

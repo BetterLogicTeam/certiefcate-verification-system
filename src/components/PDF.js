@@ -1,6 +1,10 @@
 import React from "react";
 import Pdf from "react-to-pdf";
-
+import {
+  exportComponentAsJPEG,
+  exportComponentAsPDF,
+  exportComponentAsPNG,
+} from "react-component-export-image";
 const ref = React.createRef();
 
 const PDF = (props) => {
@@ -12,9 +16,14 @@ const PDF = (props) => {
         <p>Institute Name:{props.institute}</p>
         <p>Program Name:{props.program}</p>
       </div>
-      <Pdf targetRef={ref} filename="certiefcate.pdf">
+
+      <button onClick={() => exportComponentAsPDF(ref)}>Export As PDF</button>
+      <button onClick={() => exportComponentAsPNG(ref)}>Export As PNG</button>
+      <button onClick={() => exportComponentAsJPEG(ref)}>Export As JPEG</button>
+
+      {/* <Pdf targetRef={ref} filename="certiefcate.pdf">
         {({ toPdf }) => <button onClick={toPdf}>Download as PDF</button>}
-      </Pdf>
+      </Pdf> */}
     </>
   );
 };

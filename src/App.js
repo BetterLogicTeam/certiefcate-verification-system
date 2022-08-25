@@ -25,22 +25,22 @@ export const App = () => {
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
       <a class="navbar-brand" href="#">Better Logics</a>
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto">
+        {/* <li class="nav-item">
         <Link to="/certiefcate" className="text-decoration-none">
         <a class="nav-link text-decoration-none" href="#">Generate certiefcate </a>
           
         </Link>
-        </li>
-        <li class="nav-item">
+        </li> */}
+        {/* <li class="nav-item">
         <Link to="/uploadpdf" className="text-decoration-none">
         <a class="nav-link text-decoration-none" href="#">Upload pdf </a>
           
         </Link>
-        </li>
+        </li> */}
         <li class="nav-item">
         <Link to="/" className="text-decoration-none">
-        <a class="nav-link text-decoration-none" href="#">Upload image </a>
+        <a class="nav-link text-decoration-none" href="#">Upload Files </a>
           
         </Link>
         </li>
@@ -53,15 +53,12 @@ export const App = () => {
         
        
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      
     </div>
   </div>
 </nav>
-<div className="App container mt-5">
-     <h2 className="mb-5"> Certificates Verification system</h2>
+<div className="App" style={{backgroundColor:"#152733"}}>
+     <h2 className="mb-5 container pt-3 text-white"> Certificates Verification system</h2>
        
       
       <Routes>

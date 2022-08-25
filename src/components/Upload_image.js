@@ -153,12 +153,12 @@ console.log(hash)
 
  
   return (
-    <div className="container mt-5">
-      <form>
+    <div className="container mt-5 border py-3" style={{backgroundColor:"#152733"}} >
+      <form className="">
 
 
       <div class="mb-3">
-  <label for="formFile" class="form-label">Enter Cnic</label>
+  <label for="formFile" class="form-label text-white">Enter Cnic</label>
   <input class="form-control" type="number"
        
        placeholder="Enter cnic "
@@ -190,26 +190,30 @@ console.log(hash)
       </form>   
 
       <div>
-          <div class="mb-3">
-  <label for="formFile" class="form-label">Upload pdf</label>
+      <div class="mb-3">
+  <label for="formFile" class="form-label text-white" accept="audio/*">Upload audio</label>
+  <input class="form-control" type="file" name="file" onChange={changeHandlerAudio} />
+  
+</div>  
+
+<div class="mb-3">
+  <label for="formFile" class="form-label text-white">Upload Video</label>
+  <input class="form-control" type="file" name="file" accept="video/*" onChange={changeHandlerViedo} />
+  
+</div>
+
+<div class="mb-3">
+  <label for="formFile" class="form-label text-white">Upload Image</label>
+  <input class="form-control" type="file" name="file" accept="image/*" onChange={changeHandlerImage} />
+  
+</div>
+
+<div class="mb-3">
+  <label for="formFile" class="form-label text-white" accept=".pdf">Upload pdf</label>
   <input class="form-control" type="file" name="file" onChange={changeHandlerPdf} />
   
 </div>
-<div class="mb-3">
-  <label for="formFile" class="form-label">Upload Image</label>
-  <input class="form-control" type="file" name="file" onChange={changeHandlerImage} />
-  
-</div>
-<div class="mb-3">
-  <label for="formFile" class="form-label">Upload Video</label>
-  <input class="form-control" type="file" name="file" onChange={changeHandlerViedo} />
-  
-</div>
-<div class="mb-3">
-  <label for="formFile" class="form-label">Upload audio</label>
-  <input class="form-control" type="file" name="file" onChange={changeHandlerAudio} />
-  
-</div>
+
 <button  className="btn btn-secondary ml-3" onClick={submitdata}>
         submit
       </button>

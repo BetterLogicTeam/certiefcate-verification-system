@@ -5,11 +5,14 @@
 }
 
 
-
-
-
-
-
-body,html{
+/* body,html{
   background-color: #152733;
+} */
+.navbg{background: rgba(40, 58, 90, 0.9);}
+
+
+.bg{
+background: linear-gradient(rgba(40, 58, 90, 0.9), rgba(40, 58, 90, 0.9)), url(hero-bg.jpg) fixed center center;
+background-size: cover;
+padding: 120px 0;
 }

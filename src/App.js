@@ -18,13 +18,13 @@ export const App = () => {
   return (
 
 <>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg  navbg">
   <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-      <a class="navbar-brand" href="#">Better Logics</a>
+    <div class="collapse navbar-collapse " id="navbarTogglerDemo01">
+      <a class="navbar-brand text-white" href="#">Better Logics</a>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto">
         {/* <li class="nav-item">
         <Link to="/certiefcate" className="text-decoration-none">
@@ -40,13 +40,13 @@ export const App = () => {
         </li> */}
         <li class="nav-item">
         <Link to="/" className="text-decoration-none">
-        <a class="nav-link text-decoration-none" href="#">Upload Files </a>
+        <a class="nav-link text-decoration-none text-white" href="#">Upload Files </a>
           
         </Link>
         </li>
         <li class="nav-item">
         <Link to="/checkcertificate" className="text-decoration-none">
-        <a class="nav-link text-decoration-none" href="#">Checkcertificate </a>
+        <a class="nav-link text-decoration-none text-white" href="#">Checkcertificate </a>
           
         </Link>
         </li>
@@ -57,7 +57,7 @@ export const App = () => {
     </div>
   </div>
 </nav>
-<div className="App" style={{backgroundColor:"#152733"}}>
+<div className="App bg" >
      <h2 className="mb-5 container pt-3 text-white"> Certificates Verification system</h2>
        
       

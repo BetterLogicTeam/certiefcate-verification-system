@@ -28,6 +28,8 @@ import PDFViewer from 'mgr-pdf-viewer-react';
 import { useMoralis, useMoralisFile } from "react-moralis";
 import Moralis from "moralis";
 import { PDFReader } from 'reactjs-pdf-view';
+import { toast } from "react-toastify";
+
 function Checkcertificate() {
 
     // const defaultLayoutPluginInstance = defaultLayoutPlugin();
@@ -52,20 +54,23 @@ function Checkcertificate() {
 
         let acc = await loadWeb3();
 
-        alert('what is accout' + acc)
-
         if (acc == "No Wallet") {
-            alert("No Wallet Connected")
+            toast.error("No Wallet Connected")
+           
         }
         else if (acc == "Wrong Network") {
-            alert("Wrong Newtwork please connect to test net")
+           
+            toast.error("Wrong Newtwork please connect to test net")
+
         }
         else {
 
             try {
+                
                 const web3 = window.web3;
                 let nftContractOf = new web3.eth.Contract(certificateContractAbi, certificateContractAddress);
                 let hash = await nftContractOf.methods.getData(cnic_value).call()
+                toast.success("Successfull Fetched")
                 console.log('what is return from blockchain', hash)
                 setPdfFile(hash[4]);
                 setfilename(hash)
@@ -73,7 +78,7 @@ function Checkcertificate() {
 
 
             } catch (error) {
-                alert(error)
+                toast.error(error)
             }
 
 
@@ -81,7 +86,6 @@ function Checkcertificate() {
 
     }
 
-    console.log('what is return from blockchain', filename)
 
     return (
 
@@ -89,7 +93,7 @@ function Checkcertificate() {
 
             <form>
                 <div class="form-group">
-                    <label for="">Enter Cnic:</label>
+                    <label for="" className="text-white">Enter Cnic:</label>
                     <input class="form-control" type="number"
                         placeholder="ENTER CNIC NUMBER "
                         name="cnic"
@@ -143,25 +147,25 @@ function Checkcertificate() {
 
                     </div>
                     <div className="col-4">
-                        {pdfFile && <ReactAudioPlayer
-                            src={filename[1]}
-                            autoPlay
-                            controls
-                        />}
-
-                    </div>
-                    <div className="col-4">
                         <iframe
                             width="300"
-                            height="300"
+                            height="330"
                             src={filename[2]}
                             frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen
                             title="Embedded youtube"
                         />                 
 
                     </div>
+                    <div className="col-4">
+                        {pdfFile && <ReactAudioPlayer
+                            src={filename[1]}
+                            controls
+                        />}
+
+                    </div>
+               
 
 
 

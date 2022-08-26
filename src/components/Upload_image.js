@@ -1,19 +1,14 @@
 import React, { useState } from "react";
 
-import {
-  exportComponentAsJPEG,
-  exportComponentAsPDF,
-  exportComponentAsPNG,
-} from "react-component-export-image";
+// import {
+//   exportComponentAsJPEG,
+//   exportComponentAsPDF,
+//   exportComponentAsPNG,
+// } from "react-component-export-image";
 
 import { loadWeb3 } from '../apis/api'
 import { certificateContractAddress, certificateContractAbi } from '../utilies/contract';
-
-// Plugins
-
-// Import the styles
-
-// Worker
+import { toast } from "react-toastify";
 
 import { useMoralis, useMoralisFile } from "react-moralis";
 import Moralis from "moralis";
@@ -24,9 +19,6 @@ function Upload_image() {
   const [video, setVideo] = useState();
   const [pdf, setPdf] = useState();
   const [image, setImage] = useState();
-
-
-
 
   const [file, setFile] = useState();
   const { saveFile, moralisFile } = useMoralisFile();
@@ -42,31 +34,29 @@ function Upload_image() {
 const submitdata=async()=>{
  
   let acc = await loadWeb3();
-
-  alert('what is accout'+acc)
-
-
+  alert("you are inside submit"+acc)
   if (acc == "No Wallet") {
-    alert("No Wallet Connected")
+    toast.error("No Wallet Connected")
+    
 }
 else if (acc == "Wrong Network") {
-    alert("Wrong Newtwork please connect to test net")
+toast.error("Wrong Newtwork please connect to test net")
+
 }
  else {
 
 try {
+  console.log('what is all input data',allinputdata)
   const web3 = window.web3;
   let nftContractOf = new web3.eth.Contract(certificateContractAbi, certificateContractAddress);
   let hash = await nftContractOf.methods.storedata(cnic_value,allinputdata[0],allinputdata[1],allinputdata[2],allinputdata[3]).send({
     from: acc,
-   
-
 })
-alert('successfully uploaded data')
-console.log(hash)
+toast.success("Successfully uploaded data")
+console.log("what is hash",hash)
   
 } catch (error) {
-  alert(error)
+  toast.error(error)
 }
  
 
@@ -74,26 +64,24 @@ console.log(hash)
 
 }
   const IpfsStorage = async (value) => {
-    // setIsSpinner(true);
-    // e.preventDefault();
-    console.log(" what is file",value);
-
+    
     await authenticate({ signingMessage: "Log in using Moralis" })
       .then(async function (user) {
         console.log("logged in user:", user);
         const fileIpfs = new Moralis.File(value.name,value);
         await fileIpfs.saveIPFS(null, { useMasterKey: true });
-        console.log("what is return from moralis", fileIpfs._ipfs);
+        toast.success("successfully uploaded")
         let urlimage = fileIpfs._ipfs;
+        console.log('what is moralis url',fileIpfs._ipfs)
 
         setAllinputdata([...allinputdata,urlimage])
 
         setfilename(urlimage)
-        console.log('what is inside urlImage',urlimage)
+        
      
       })
       .catch(function (error) {
-        console.log(error);
+        toast.error(error)
         // setIsSpinner(false);
       });
   };
@@ -105,7 +93,7 @@ console.log(hash)
     // login()
     IpfsStorage()
   };
-  console.log('what is inside array',allinputdata)
+  
   const changeHandler = (event) => {
     setSelectedFile(event.target.files[0]);
     // setFile(URL.createObjectURL(event.target.files[0]));
@@ -140,7 +128,7 @@ console.log(hash)
 
   const changeHandlerViedo = (event) => {
     setVideo(event.target.files[0]);
-    console.log('what is video',event.target.files[0])
+    
     IpfsStorage(event.target.files[0])
 
     // setFile(URL.createObjectURL(event.target.files[0]));
@@ -153,7 +141,7 @@ console.log(hash)
 
  
   return (
-    <div className="container mt-5 border py-3" style={{backgroundColor:"#152733"}} >
+    <div className="container mt-5 border py-3" >
       <form className="">
 
 
@@ -189,9 +177,9 @@ console.log(hash)
   
       </form>   
 
-      <div>
+      <div className="clearfix">
       <div class="mb-3">
-  <label for="formFile" class="form-label text-white" accept="audio/*">Upload audio</label>
+  <label for="formFile" class="form-label text-white" >Upload audio</label>
   <input class="form-control" type="file" name="file" onChange={changeHandlerAudio} />
   
 </div>  
@@ -214,7 +202,7 @@ console.log(hash)
   
 </div>
 
-<button  className="btn btn-secondary ml-3" onClick={submitdata}>
+<button  className="btn ms-auto text-white border navbg float-md-right" onClick={submitdata}>
         submit
       </button>
    

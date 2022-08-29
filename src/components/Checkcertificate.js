@@ -30,6 +30,8 @@ import Moralis from "moralis";
 import { PDFReader } from 'reactjs-pdf-view';
 import { toast } from "react-toastify";
 
+
+
 function Checkcertificate() {
 
     // const defaultLayoutPluginInstance = defaultLayoutPlugin();
@@ -44,9 +46,10 @@ function Checkcertificate() {
 
     const [cnic_value, setcnic_value] = useState();
     const [filename, setfilename] = useState([]);
+   
     const docs = [
-        // { uri: "https://ipfs.moralis.io:2053/ipfs/QmXnT7nMu3fBojxvkza12s3tdVRp88GGF3QrcEbNTaRwLe",fileType:"pdf" }
-        { uri: "https://ipfs.moralis.io:2053/ipfs/QmXnT7nMu3fBojxvkza12s3tdVRp88GGF3QrcEbNTaRwLe", fileType: "pdf" },
+        { uri: "https://ipfs.moralis.io:2053/ipfs/QmXnT7nMu3fBojxvkza12s3tdVRp88GGF3QrcEbNTaRwLe",fileType:"pdf" }
+        // { uri: require('./certifcate.pdf'), fileType: "pdf" },
         // Local File
     ];
 
@@ -85,7 +88,7 @@ function Checkcertificate() {
         }
 
     }
-
+console.log('what is at 4',pdfFile[4])
 
     return (
 
@@ -136,7 +139,7 @@ function Checkcertificate() {
                 )}
                 <div className="row container mt-3">
 
-                    <div className="col-4">
+                    <div className="col-md-4">
 
 
                         <img className="img-fluid" src={filename[3]} ref={ref} />
@@ -146,8 +149,9 @@ function Checkcertificate() {
                         }
 
                     </div>
-                    <div className="col-4">
+                    <div className="col-md-4">
                         <iframe
+                        className=""
                             width="300"
                             height="330"
                             src={filename[2]}
@@ -158,7 +162,7 @@ function Checkcertificate() {
                         />                 
 
                     </div>
-                    <div className="col-4">
+                    <div className="col-md-4">
                         {pdfFile && <ReactAudioPlayer
                             src={filename[1]}
                             controls
@@ -171,8 +175,18 @@ function Checkcertificate() {
 
                     <div className="col-12 mt-5">
 
-                        {/* <DocViewer  style={{ width: '100%', height: 450 }} documents={docs} pluginRenderers={DocViewerRenderers}/> */}
+                        {/* <DocViewer   documents={docs} pluginRenderers={DocViewerRenderers}/> */}
+                        {isShow == true ? <div className="text-center">
 
+{/* <Pdf targetRef={ref} filename="certiefcate.pdf">
+    {({ toPdf }) => <button className="btn btn-secondary" onClick={toPdf}>Export As PDF</button>}
+</Pdf> */}
+{/* <PDFReader url={"http://www.africau.edu/images/default/sample.pdf"} width={500} ></PDFReader> */}
+<button className="btn btn-secondary my-2" >
+   <a href={filename[4]} target="_blank" className="text-white text-decoration-none"> Download PDF</a>
+</button>
+
+</div> : ""}
                         {pdfFile && <PDFViewer document={{
                             url: pdfFile
                         }} />}
@@ -181,17 +195,7 @@ function Checkcertificate() {
                     </div>
                 </div>
 
-                {isShow == true ? <div className="text-center">
-
-                    {/* <Pdf targetRef={ref} filename="certiefcate.pdf">
-                        {({ toPdf }) => <button className="btn btn-secondary" onClick={toPdf}>Export As PDF</button>}
-                    </Pdf> */}
-                    {/* <PDFReader url={"http://www.africau.edu/images/default/sample.pdf"} width={500} ></PDFReader> */}
-                    <button className="btn btn-secondary mx-2" onClick={() => exportComponentAsPDF(myref)}>
-                        Export As PDF
-                    </button>
-
-                </div> : ""}
+                
 
 
             </div>

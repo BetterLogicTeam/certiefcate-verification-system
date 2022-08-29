@@ -16,3 +16,7 @@ background: linear-gradient(rgba(40, 58, 90, 0.9), rgba(40, 58, 90, 0.9)), url(h
 background-size: cover;
 padding: 120px 0;
 }
+
+.mgrpdf-navigation, .mgrpdf-navigation__controls, .mgrpdf-navigation__controls--wrapper{
+  width: 20% !important;
+}
